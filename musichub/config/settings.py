@@ -21,8 +21,10 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework',
     'rest_framework.authtoken',
+    'django_filters',
     'apps.api',
     'apps.users',
+    'apps.audio_library',
 ]
 
 MIDDLEWARE = [
@@ -113,6 +115,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
+    'DEFAULT_FILTER_BACKENDs': [
+        'django.filters.rest_framework.DjangoFilterBackend'
+    ]
 }
 
 DJOSER = {

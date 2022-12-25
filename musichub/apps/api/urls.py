@@ -7,4 +7,5 @@ router = DefaultRouter()
 
 urlpatterns = (
     path('', include('apps.users.urls')),
+    path('audio/', include('apps.audio_library.urls'))
 )
