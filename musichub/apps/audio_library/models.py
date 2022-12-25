@@ -1,14 +1,10 @@
+from apps.api.services import (get_path_upload_cover_album,
+                               get_path_upload_cover_playlist,
+                               get_path_upload_cover_track,
+                               get_path_upload_track, validate_size_image)
+from apps.users.models import AuthUser
 from django.core.validators import FileExtensionValidator
 from django.db import models
-
-from apps.api.services import (
-    validate_size_image,
-    get_path_upload_track,
-    get_path_upload_cover_album,
-    get_path_upload_cover_playlist,
-    get_path_upload_cover_track,
-)
-from apps.users.models import AuthUser
 
 
 class License(models.Model):

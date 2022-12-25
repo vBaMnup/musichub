@@ -1,8 +1,8 @@
-from rest_framework import serializers
-
 from apps.api.services import delete_old_file
+from apps.audio_library.models import (Album, Comment, Genre, License,
+                                       Playlist, Track)
 from apps.users.serializers import AuthorSerializer
-from apps.audio_library.models import Genre, License, Album, Track, Playlist, Comment
+from rest_framework import serializers
 
 
 class BaseSerializer(serializers.ModelSerializer):

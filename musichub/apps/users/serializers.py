@@ -1,8 +1,6 @@
-from drf_extra_fields.fields import Base64ImageField
+from apps.users.models import AuthUser, SocialLinks
 from djoser.serializers import UserCreateSerializer
 from rest_framework import serializers
-
-from apps.users.models import AuthUser, SocialLinks
 
 
 class UserSerializer(serializers.ModelSerializer):

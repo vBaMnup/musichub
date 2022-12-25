@@ -1,12 +1,10 @@
-from django.urls import include, path
-from rest_framework.routers import DefaultRouter
-
-from apps.audio_library.views import (GenreView, LicenseView, AlbumView,
-                                      PublicAlbumView, TrackView,
-                                      PlayListView, AuthorTrackListView,
-                                      TrackListView, StreamingFileView,
-                                      DownloadTrackView, CommentAuthorView,
-                                      CommentView)
+from apps.audio_library.views import (AlbumView, AuthorTrackListView,
+                                      CommentAuthorView, CommentView,
+                                      DownloadTrackView, GenreView,
+                                      LicenseView, PlayListView,
+                                      PublicAlbumView, StreamingFileView,
+                                      TrackListView, TrackView)
+from django.urls import path
 
 urlpatterns = [
     path('genre/', GenreView.as_view()),

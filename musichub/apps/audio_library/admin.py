@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import License, Genre, Album, Track, Comment, Playlist
+from .models import Album, Comment, Genre, License, Playlist, Track
 
 
 @admin.register(License)

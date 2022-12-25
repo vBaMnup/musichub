@@ -1,8 +1,7 @@
+from apps.api.services import get_path_upload_avatar, validate_size_image
+from django.contrib.auth.models import AbstractUser
 from django.core.validators import FileExtensionValidator
 from django.db import models
-from django.contrib.auth.models import AbstractUser
-
-from apps.api.services import get_path_upload_avatar, validate_size_image
 
 
 class AuthUser(AbstractUser):

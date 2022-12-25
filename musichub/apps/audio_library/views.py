@@ -1,26 +1,23 @@
 import os
 
-from django.http import Http404, FileResponse
-from rest_framework import generics, viewsets, views
-from rest_framework.parsers import MultiPartParser
+from apps.api.classes import MixedSerializer, Pagination
+from apps.api.permissions import IsAuthor
+from apps.api.services import delete_old_file
+from apps.audio_library.models import (Album, Comment, Genre, License,
+                                       Playlist, Track)
+from apps.audio_library.serializers import (AlbumSerializer,
+                                            AuthorTrackSerializer,
+                                            CommentAuthorSerializer,
+                                            CommentSerializer,
+                                            CreateAuthorTrackSerializer,
+                                            CreatePlayListSerializer,
+                                            GenreSerializer, LicenseSerializer,
+                                            PlayListSerializer)
+from django.http import FileResponse, Http404
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-
-from apps.api.classes import MixedSerializer, Pagination
-from apps.api.services import delete_old_file
-from apps.audio_library.models import Genre, License, Album, Track, Playlist, Comment
-from apps.audio_library.serializers import (
-    GenreSerializer,
-    LicenseSerializer,
-    AlbumSerializer,
-    CreateAuthorTrackSerializer,
-    AuthorTrackSerializer,
-    CreatePlayListSerializer,
-    PlayListSerializer,
-    CommentAuthorSerializer,
-    CommentSerializer
-)
-from apps.api.permissions import IsAuthor
+from rest_framework import generics, views, viewsets
+from rest_framework.parsers import MultiPartParser
 
 
 class GenreView(generics.ListAPIView):
@@ -170,8 +167,7 @@ class StreamingFileView(views.APIView):
             self.set_play(track)
             return FileResponse(open(track.file.path, 'rb'),
                                 filename=track.file.name)
-        else:
-            return Http404
+        return Http404
 
 
 class DownloadTrackView(views.APIView):
@@ -189,8 +185,7 @@ class DownloadTrackView(views.APIView):
             return FileResponse(open(self.track.file.path, 'rb'),
                                 filename=self.track.file.name,
                                 as_attachment=True)
-        else:
-            return Http404
+        return Http404
 
 
 class CommentAuthorView(viewsets.ModelViewSet):

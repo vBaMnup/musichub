@@ -1,9 +1,8 @@
-from rest_framework import viewsets, parsers, permissions
-
-from apps.users.serializers import (UserSerializer, AuthorSerializer,
-                                    SocialLinkSerializer)
-from apps.users.models import AuthUser
 from apps.api.permissions import IsAuthor
+from apps.users.models import AuthUser
+from apps.users.serializers import (AuthorSerializer, SocialLinkSerializer,
+                                    UserSerializer)
+from rest_framework import parsers, permissions, viewsets
 
 
 class UserView(viewsets.ModelViewSet):
